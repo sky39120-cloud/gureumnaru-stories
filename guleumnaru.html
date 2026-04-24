@@ -1,0 +1,3159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구름나루 — 어디로든 떠날 수 있는 곳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FDF4E3;
+    --cream-deep: #F5E4C8;
+    --peach: #F3CFBE;
+    --peach-deep: #E8A890;
+    --rose: #D97A88;
+    --lavender: #E8D5E3;
+    --lavender-deep: #B8A5C9;
+    --plum: #6B4E7A;
+    --plum-deep: #4A3B5C;
+    --ink: #2D2540;
+    --gold: #C9965D;
+    --gold-soft: #E8BE8A;
+    --night: #1A1B3A;
+    --night-mid: #2D2952;
+    --night-warm: #4A3D6E;
+    --moon: #FFF4D0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Serif KR', serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.85;
+    overflow-x: hidden;
+  }
+
+  .display { font-family: 'Noto Serif KR', serif; }
+  .latin { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+  /* ─────────── HERO ─────────── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #FDF4E3 0%, #FCE4D0 50%, #F3CFBE 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+  }
+
+  /* ─────────── HERO (재배치) ─────────── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #FDF4E3 0%, #FCE4D0 50%, #F3CFBE 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1.5rem 2rem;
+  }
+
+  .hero-cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: drift 40s ease-in-out infinite;
+  }
+  .hero-cloud.c1 { width: 180px; height: 50px; top: 8%; left: 8%; animation-delay: 0s; }
+  .hero-cloud.c2 { width: 140px; height: 40px; top: 15%; right: 12%; animation-delay: -10s; }
+  .hero-cloud.c3 { width: 220px; height: 55px; bottom: 20%; left: 10%; opacity: 0.4; animation-delay: -20s; }
+  .hero-cloud.c4 { width: 160px; height: 45px; top: 5%; right: 25%; opacity: 0.5; animation-delay: -15s; }
+
+  @keyframes drift {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(40px); }
+  }
+
+  /* 태그라인 - 상단 배치, 여백 축소 */
+  .hero-tagline-top {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 1rem;
+    animation: floatUp 1.4s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
+  }
+
+  .hero-tagline-top .lead {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.15rem, 2.6vw, 1.4rem);
+    color: var(--plum-deep);
+    font-style: italic;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .hero-tagline-top .sub {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(0.9rem, 1.9vw, 1.05rem);
+    color: var(--plum);
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin: 0.6rem 0;
+  }
+  .hero-ornament .line {
+    width: 45px;
+    height: 1px;
+    background: var(--lavender-deep);
+  }
+  .hero-ornament .dot {
+    width: 4px; height: 4px;
+    background: var(--lavender-deep);
+    border-radius: 50%;
+  }
+
+  /* 로고 - 조금 더 크게 */
+  .hero-logo {
+    width: min(420px, 80vw);
+    margin-bottom: 0.5rem;
+    animation: floatUp 1.4s cubic-bezier(0.23, 1, 0.32, 1) 0.4s both;
+  }
+
+  @keyframes floatUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 제목 */
+  .hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(2.6rem, 6.5vw, 4rem);
+    font-weight: 800;
+    color: var(--plum-deep);
+    letter-spacing: 0.25em;
+    margin-bottom: 0.4rem;
+    animation: floatUp 1.6s cubic-bezier(0.23, 1, 0.32, 1) 0.6s both;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    color: var(--plum);
+    letter-spacing: 0.5em;
+    animation: floatUp 1.6s cubic-bezier(0.23, 1, 0.32, 1) 0.7s both;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--plum);
+    letter-spacing: 0.3em;
+    opacity: 0.6;
+    animation: bob 2s ease-in-out infinite;
+  }
+
+  /* ─────────── 서가로 바로가기 버튼 (재방문자용) ─────────── */
+  .skip-to-library {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.1rem;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(107, 78, 122, 0.25);
+    border-radius: 50px;
+    color: var(--plum-deep);
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 50;
+    animation: fadeInSkip 1s ease-out 1.2s both;
+  }
+  .skip-to-library:hover {
+    background: var(--plum-deep);
+    color: var(--cream);
+    border-color: var(--plum-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 59, 92, 0.2);
+  }
+  .skip-to-library .icon {
+    font-size: 0.95rem;
+  }
+  .skip-to-library .arrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+  }
+  @keyframes fadeInSkip {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 640px) {
+    .skip-to-library {
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.78rem;
+    }
+    .skip-to-library .skip-label-long {
+      display: none;
+    }
+  }
+
+  @media (max-height: 800px) {
+    .hero-logo { width: min(340px, 68vw); }
+    .hero-title { font-size: clamp(2.2rem, 5.5vw, 3.2rem); }
+    .hero-tagline-top { margin-bottom: 0.8rem; }
+    .hero-tagline-top .sub { line-height: 1.7; }
+    .hero-ornament { margin: 0.4rem 0; }
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 0.8rem 1rem 2rem; }
+    .hero-logo { width: min(300px, 72vw); margin-bottom: 0.3rem; }
+    .hero-title { font-size: 2.4rem; letter-spacing: 0.15em; margin-bottom: 0.3rem; }
+    .hero-tagline-top { margin-bottom: 0.8rem; }
+    .hero-tagline-top .sub { line-height: 1.7; }
+    .hero-ornament { margin: 0.4rem 0; gap: 0.6rem; }
+    .hero-ornament .line { width: 35px; }
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─────────── MANIFESTO ─────────── */
+  .manifesto {
+    padding: 10rem 2rem;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .manifesto-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+  }
+
+  .manifesto-verse {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.3rem, 2.8vw, 1.7rem);
+    line-height: 2.4;
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .manifesto-verse p {
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .manifesto-verse p.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .manifesto-verse .accent {
+    color: var(--rose);
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .manifesto-divider {
+    width: 1px;
+    height: 60px;
+    background: var(--lavender-deep);
+    margin: 4rem auto;
+  }
+
+  /* ─────────── NIGHT SECTION ─────────── */
+  .night {
+    background: linear-gradient(180deg, #1A1B3A 0%, #2D2952 50%, #4A3D6E 100%);
+    padding: 10rem 2rem;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .night-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    background: var(--moon);
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .night-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .night .section-mark { color: var(--gold-soft); }
+
+  .night-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--moon);
+    letter-spacing: 0.15em;
+    margin-bottom: 3rem;
+  }
+
+  .night-verse {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.1rem, 2.3vw, 1.4rem);
+    line-height: 2.4;
+    color: #E8D5E3;
+    letter-spacing: 0.04em;
+  }
+
+  .night-verse p { margin-bottom: 2rem; }
+  .night-verse .warm { color: var(--gold-soft); font-style: italic; }
+
+  /* ─────────── WHAT WE DO ─────────── */
+
+  /* ─────────── WEATHER POEM (컴팩트 버전) ─────────── */
+  .weather-poem {
+    padding: 5rem 2rem 6rem;
+    background: linear-gradient(180deg, #F3CFBE 0%, #F5DACB 40%, var(--cream) 100%);
+    position: relative;
+  }
+
+  .weather-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+
+  .weather-item {
+    text-align: center;
+    padding: 1.8rem 0.8rem 1.4rem;
+    cursor: pointer;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(184, 165, 201, 0.25);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    backdrop-filter: blur(6px);
+  }
+
+  .weather-item:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: var(--rose);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(107, 78, 122, 0.12);
+  }
+
+  .weather-symbol {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2rem;
+    color: var(--rose);
+    margin-bottom: 0.2rem;
+    display: block;
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .weather-reading {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .weather-item h4 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--plum-deep);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.4rem;
+  }
+
+  .weather-item p {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.78rem;
+    color: var(--plum);
+    line-height: 1.7;
+    font-style: italic;
+    opacity: 0.85;
+    letter-spacing: 0;
+  }
+
+  @media (max-width: 880px) {
+    .weather-inner {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+    .weather-item:nth-child(4) {
+      grid-column: 1 / 2;
+    }
+    .weather-item:nth-child(5) {
+      grid-column: 2 / 3;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .weather-poem { padding: 4rem 1rem; }
+    .weather-inner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+    .weather-item {
+      padding: 1.3rem 0.5rem 1rem;
+    }
+    .weather-item:nth-child(4) {
+      grid-column: auto;
+    }
+    .weather-item:nth-child(5) {
+      grid-column: 1 / 3;
+    }
+    .weather-symbol { font-size: 1.7rem; }
+    .weather-item h4 { font-size: 0.95rem; }
+    .weather-item p { font-size: 0.75rem; }
+  }
+
+  .offerings {
+    padding: 10rem 2rem;
+    background: linear-gradient(180deg, #F3CFBE 0%, #FDF4E3 100%);
+  }
+
+  .offerings-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .offerings-title {
+    text-align: center;
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--plum-deep);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .offerings-subtitle {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--plum);
+    letter-spacing: 0.2em;
+    margin-bottom: 5rem;
+  }
+
+  .offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.8rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* 위 줄 2개 (동시방 · 동화) - 더 크게 강조 */
+  .offering-card:nth-child(1) { grid-column: 1 / span 3; }
+  .offering-card:nth-child(2) { grid-column: 4 / span 3; }
+  /* 아래 줄 3개 (마음의 나루 · 편지함 · 쉼터) */
+  .offering-card:nth-child(3) { grid-column: 1 / span 2; }
+  .offering-card:nth-child(4) { grid-column: 3 / span 2; }
+  .offering-card:nth-child(5) { grid-column: 5 / span 2; }
+
+  @media (max-width: 900px) {
+    .offerings-grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 640px;
+    }
+    .offering-card:nth-child(1),
+    .offering-card:nth-child(2),
+    .offering-card:nth-child(3),
+    .offering-card:nth-child(4),
+    .offering-card:nth-child(5) {
+      grid-column: auto;
+    }
+    /* 마지막 홀수 카드 가운데 정렬 */
+    .offering-card:nth-child(5) {
+      grid-column: 1 / span 2;
+      max-width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .offerings-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .offering-card:nth-child(5) {
+      max-width: none;
+    }
+  }
+
+  /* ─────────── 카드별 파스텔 색상 ─────────── */
+  /* 동시방 - 복숭아빛 (생명력, 반짝임) */
+  .offering-card.card-peach {
+    background: linear-gradient(135deg, rgba(255, 228, 214, 0.75) 0%, rgba(251, 218, 198, 0.6) 100%);
+    border-color: rgba(232, 165, 144, 0.4);
+  }
+  .offering-card.card-peach:hover {
+    background: linear-gradient(135deg, rgba(255, 228, 214, 0.95) 0%, rgba(248, 200, 178, 0.85) 100%);
+    border-color: #E8A590;
+  }
+  .offering-card.card-peach h3 { color: #9D5433; }
+  .offering-card.card-peach .card-cta,
+  .offering-card.card-peach:hover .card-cta { color: #C97B6E; }
+
+  /* 동화 - 하늘빛 (상상, 여행) */
+  .offering-card.card-sky {
+    background: linear-gradient(135deg, rgba(221, 235, 246, 0.75) 0%, rgba(200, 220, 236, 0.6) 100%);
+    border-color: rgba(140, 175, 205, 0.4);
+  }
+  .offering-card.card-sky:hover {
+    background: linear-gradient(135deg, rgba(221, 235, 246, 0.95) 0%, rgba(185, 210, 230, 0.85) 100%);
+    border-color: #8CAFCD;
+  }
+  .offering-card.card-sky h3 { color: #3B5E80; }
+  .offering-card.card-sky .card-cta,
+  .offering-card.card-sky:hover .card-cta { color: #5F85A8; }
+
+  /* 마음의 나루 - 장미빛 (따스함, 포옹) */
+  .offering-card.card-rose {
+    background: linear-gradient(135deg, rgba(248, 222, 225, 0.75) 0%, rgba(241, 206, 211, 0.6) 100%);
+    border-color: rgba(210, 155, 165, 0.4);
+  }
+  .offering-card.card-rose:hover {
+    background: linear-gradient(135deg, rgba(248, 222, 225, 0.95) 0%, rgba(235, 190, 198, 0.85) 100%);
+    border-color: #D29BA5;
+  }
+  .offering-card.card-rose h3 { color: #8E4954; }
+  .offering-card.card-rose .card-cta,
+  .offering-card.card-rose:hover .card-cta { color: #B06773; }
+
+  /* 편지함 - 연초록 (자연, 편안함) */
+  .offering-card.card-sage {
+    background: linear-gradient(135deg, rgba(226, 234, 217, 0.75) 0%, rgba(210, 223, 198, 0.6) 100%);
+    border-color: rgba(150, 175, 135, 0.4);
+  }
+  .offering-card.card-sage:hover {
+    background: linear-gradient(135deg, rgba(226, 234, 217, 0.95) 0%, rgba(200, 215, 187, 0.85) 100%);
+    border-color: #96AF87;
+  }
+  .offering-card.card-sage h3 { color: #546A43; }
+  .offering-card.card-sage .card-cta,
+  .offering-card.card-sage:hover .card-cta { color: #728F5D; }
+
+  /* 쉼터 - 라벤더 (휴식, 고요) */
+  .offering-card.card-lavender {
+    background: linear-gradient(135deg, rgba(232, 222, 240, 0.75) 0%, rgba(215, 204, 230, 0.6) 100%);
+    border-color: rgba(165, 145, 185, 0.4);
+  }
+  .offering-card.card-lavender:hover {
+    background: linear-gradient(135deg, rgba(232, 222, 240, 0.95) 0%, rgba(208, 190, 225, 0.85) 100%);
+    border-color: #A591B9;
+  }
+  .offering-card.card-lavender h3 { color: #563E72; }
+  .offering-card.card-lavender .card-cta,
+  .offering-card.card-lavender:hover .card-cta { color: #7B5F96; }
+
+  .offering-card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(184, 165, 201, 0.3);
+    border-radius: 14px;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    cursor: pointer;
+  }
+
+  /* 위 줄 2개 카드(동시방, 동화) - 강조된 크기 */
+  .offering-card:nth-child(1),
+  .offering-card:nth-child(2) {
+    padding: 3.5rem 2.5rem 3rem;
+  }
+  .offering-card:nth-child(1) h3,
+  .offering-card:nth-child(2) h3 {
+    font-size: 1.5rem;
+  }
+  .offering-card:nth-child(1) .offering-icon,
+  .offering-card:nth-child(2) .offering-icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  .offering-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(107, 78, 122, 0.15);
+  }
+
+  .offering-card .card-cta {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    transition: all 0.4s;
+  }
+
+  .offering-card:hover .card-cta {
+    color: var(--rose);
+    opacity: 1;
+    letter-spacing: 0.2em;
+  }
+
+  .offering-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .offering-card h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--plum-deep);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .offering-card .latin {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+  }
+
+  .offering-card p {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+  }
+
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  @media (max-width: 640px) {
+    
+    .weather-item:nth-child(1),
+    .weather-item:nth-child(2),
+    .weather-item:nth-child(3),
+    .weather-item:nth-child(4),
+    
+    
+  }
+
+  
+
+  
+
+  
+
+  
+
+  /* ─────────── WEATHER MODAL ─────────── */
+  .weather-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 27, 58, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .weather-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal-content {
+    background: linear-gradient(180deg, #FDF4E3 0%, #FCE4D0 100%);
+    border-radius: 16px;
+    padding: 4rem 3rem 3rem;
+    max-width: 540px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    text-align: center;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 40px 80px rgba(26, 27, 58, 0.3);
+  }
+
+  .weather-modal.open .modal-content {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    background: rgba(107, 78, 122, 0.1);
+    border: 1px solid var(--lavender-deep);
+    border-radius: 50%;
+    font-size: 1.4rem;
+    color: var(--plum-deep);
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3px;
+    transition: all 0.3s;
+    font-family: 'Cormorant Garamond', serif;
+    z-index: 10;
+  }
+
+  .modal-close:hover {
+    background: var(--rose);
+    color: white;
+    border-color: var(--rose);
+    transform: rotate(90deg);
+  }
+
+  .modal-return {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.9rem 2.2rem;
+    background: var(--plum-deep);
+    color: var(--cream);
+    border: none;
+    border-radius: 30px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 6px 20px rgba(74, 59, 92, 0.25);
+  }
+
+  .modal-return:hover {
+    background: var(--rose);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(217, 122, 136, 0.35);
+  }
+
+  .modal-return-hint {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--plum);
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+    margin-top: 1rem;
+  }
+
+  .modal-symbol {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 4rem;
+    color: var(--rose);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .modal-reading {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8rem;
+  }
+
+  .modal-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--plum-deep);
+    letter-spacing: 0.25em;
+    margin-bottom: 2.5rem;
+  }
+
+  .modal-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--lavender-deep);
+    margin: 0 auto 2.5rem;
+  }
+
+  .modal-letter-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--plum);
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+
+  .modal-poem {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.15rem;
+    line-height: 2.3;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .modal-signoff {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--plum);
+    letter-spacing: 0.2em;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--lavender-deep);
+  }
+
+  @media (max-width: 640px) {
+    .modal-content {
+      padding: 3rem 1.8rem 2rem;
+    }
+    .modal-poem { font-size: 1.05rem; }
+  }
+
+  /* ─────────── LIBRARY MODAL (콘텐츠 목록) ─────────── */
+  .library-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 27, 58, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .library-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .library-content {
+    background: linear-gradient(180deg, #FDF4E3 0%, #FCE4D0 100%);
+    border-radius: 16px;
+    padding: 3.5rem 3rem 3rem;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 40px 80px rgba(26, 27, 58, 0.3);
+  }
+
+  .library-modal.open .library-content {
+    transform: scale(1) translateY(0);
+  }
+
+  .library-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px dashed var(--lavender-deep);
+  }
+
+  .library-header .latin {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.8rem;
+  }
+
+  .library-header h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--plum-deep);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.8rem;
+  }
+
+  .library-header p {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.95rem;
+    color: var(--plum);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  .library-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .library-item {
+    display: block;
+    padding: 1.4rem 1.2rem;
+    margin-bottom: 0.8rem;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(184, 165, 201, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .library-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--rose);
+    transform: translateX(6px);
+  }
+
+  .library-item-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--gold);
+    min-width: 32px;
+    text-align: center;
+  }
+
+  .library-item-text {
+    flex: 1;
+  }
+
+  .library-item-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--plum-deep);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+
+  .library-item-meta {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.85rem;
+    color: var(--plum);
+    opacity: 0.75;
+    letter-spacing: 0.03em;
+  }
+
+  .library-item-arrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--lavender-deep);
+    transition: all 0.3s;
+  }
+
+  .library-item:hover .library-item-arrow {
+    color: var(--rose);
+    transform: translateX(4px);
+  }
+
+  .library-item.coming-soon {
+    opacity: 0.55;
+    cursor: default;
+  }
+
+  .library-item.coming-soon:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(184, 165, 201, 0.3);
+  }
+
+  .library-item.coming-soon .library-item-meta::after {
+    content: ' · 준비 중';
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .library-footer-note {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--plum);
+    opacity: 0.6;
+    letter-spacing: 0.15em;
+  }
+
+  @media (max-width: 640px) {
+    .library-content { padding: 2.5rem 1.5rem 2rem; }
+    .library-header h3 { font-size: 1.4rem; }
+  }
+
+  /* ─────────── READER MODAL (에세이/독백 읽기) ─────────── */
+  .reader-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 27, 58, 0.82);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .reader-modal.open {
+    display: flex;
+    opacity: 1;
+  }
+
+  .reader-content {
+    background-color: #FDF4E3;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(201, 152, 74, 0.06) 0%, transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(122, 107, 142, 0.06) 0%, transparent 45%),
+      linear-gradient(180deg, #FDF4E3 0%, #FCEFD9 100%);
+    border-radius: 12px;
+    padding: 4.5rem 3.5rem 3.5rem;
+    max-width: 620px;
+    width: 100%;
+    position: relative;
+    margin: auto;
+    box-shadow: 0 40px 80px rgba(26, 27, 58, 0.35);
+    transform: translateY(20px);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    color: #2D2540;
+  }
+
+  .reader-modal.open .reader-content {
+    transform: translateY(0);
+  }
+
+  .reader-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px dashed var(--lavender-deep);
+  }
+
+  .reader-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+  }
+
+  .reader-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.5rem, 4vw, 1.9rem);
+    font-weight: 700;
+    color: var(--plum-deep);
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
+
+  .reader-meta {
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--plum);
+    opacity: 0.8;
+  }
+
+  .reader-body {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1rem, 2.3vw, 1.1rem);
+    line-height: 2.3;
+    color: #2D2540;
+    letter-spacing: 0.02em;
+  }
+
+  .reader-body p {
+    margin-bottom: 1.8rem;
+    color: #2D2540;
+  }
+
+  .reader-body .highlight {
+    color: #B85668;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  .reader-body .soft {
+    display: block;
+    text-align: center;
+    margin: 2.5rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #B8A5C9;
+    letter-spacing: 0.5em;
+  }
+
+  .reader-body .verse {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    color: #4A3B5C;
+    margin: 2rem 0;
+    line-height: 2;
+    font-weight: 500;
+  }
+
+  /* ─────────── 동시 전용 스타일 ─────────── */
+  .reader-body.poem {
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .reader-body.poem .poem-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.1rem, 2.4vw, 1.25rem);
+    line-height: 2.6;
+    color: #2D2540;
+    letter-spacing: 0.04em;
+    padding: 2rem 0;
+    margin: 0 auto;
+    max-width: 380px;
+    white-space: pre-line;
+  }
+
+  .reader-body.poem .poem-stanza {
+    margin: 2rem 0;
+  }
+
+  .reader-body.poem .poem-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .reader-body.poem .poem-ornament {
+    color: var(--lavender-deep);
+    font-size: 1rem;
+    letter-spacing: 0.8em;
+    margin: 2rem 0;
+  }
+
+  .reader-body.poem .poem-note {
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--plum);
+    line-height: 1.9;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--lavender-deep);
+    opacity: 0.85;
+  }
+
+  .reader-signature {
+    text-align: right;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--lavender-deep);
+    font-family: 'Noto Serif KR', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--plum);
+    letter-spacing: 0.05em;
+  }
+
+  .reader-signature .from {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .reader-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--lavender-deep);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .reader-btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 30px;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid transparent;
+    background: var(--plum-deep);
+    color: var(--cream);
+    box-shadow: 0 4px 15px rgba(74, 59, 92, 0.2);
+  }
+
+  .reader-btn:hover {
+    background: var(--rose);
+    transform: translateY(-2px);
+  }
+
+  .reader-btn.secondary {
+    background: transparent;
+    color: var(--plum-deep);
+    border-color: var(--lavender-deep);
+    box-shadow: none;
+  }
+
+  .reader-btn.secondary:hover {
+    background: var(--lavender);
+    border-color: var(--plum);
+  }
+
+  @media (max-width: 640px) {
+    .reader-content { padding: 3.5rem 1.5rem 2rem; }
+    .reader-body { line-height: 2.1; }
+  }
+
+  
+
+  
+
+  
+
+  
+
+  /* ─────────── CTA ─────────── */
+  .cta {
+    padding: 10rem 2rem;
+    background: linear-gradient(135deg, #4A3B5C 0%, #6B4E7A 50%, #8B6F9A 100%);
+    text-align: center;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(232, 190, 138, 0.15) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 1; }
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .cta-quote {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.9;
+    color: var(--cream);
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .cta-quote .gold {
+    color: var(--gold-soft);
+    font-weight: 700;
+  }
+
+  .cta-signoff {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.4em;
+    color: var(--gold-soft);
+    margin-top: 4rem;
+    opacity: 0.85;
+  }
+
+  /* ─────────── FOOTER ─────────── */
+  footer {
+    background: var(--ink);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--lavender-deep);
+  }
+
+  footer .name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.5rem;
+    color: var(--moon);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.5rem;
+  }
+
+  footer .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 640px) {
+    .manifesto, .night, .offerings, .weather-poem, .cta { padding: 6rem 1.5rem; }
+    .hero-title { letter-spacing: 0.15em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-cloud c1"></div>
+  <div class="hero-cloud c2"></div>
+  <div class="hero-cloud c3"></div>
+  <div class="hero-cloud c4"></div>
+
+  <!-- 서가로 바로가기 (재방문자용) -->
+  <a href="#서가" class="skip-to-library" onclick="scrollToOfferings(event)">
+    <span class="icon">⛵</span>
+    <span>서가로<span class="skip-label-long"> 바로가기</span></span>
+    <span class="arrow">→</span>
+  </a>
+
+  <!-- 태그라인을 가장 위로 배치 -->
+  <div class="hero-tagline-top">
+    <p class="lead">어디로든 떠날 수 있는 곳</p>
+    <div class="hero-ornament">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+    <p class="sub">쉬어 가는 나루<br>해도 달도 별도<br>비도 눈도</p>
+  </div>
+
+  <!-- 메인 로고 SVG (낮 버전 축소) -->
+  <svg class="hero-logo" viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cloudGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFFFFF"/>
+        <stop offset="100%" stop-color="#E8D5E3"/>
+      </linearGradient>
+      <linearGradient id="sailGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFF8E7"/>
+        <stop offset="100%" stop-color="#F2CC94"/>
+      </linearGradient>
+      <linearGradient id="sailGrad2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFFBF0"/>
+        <stop offset="100%" stop-color="#E8B591"/>
+      </linearGradient>
+      <linearGradient id="sailGrad3" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFF4F0"/>
+        <stop offset="100%" stop-color="#E6A8AF"/>
+      </linearGradient>
+    </defs>
+
+    <!-- 달 -->
+    <g>
+      <circle cx="130" cy="155" r="26" fill="#F2E5D0"/>
+      <circle cx="138" cy="148" r="24" fill="#FDF4E3"/>
+      <circle cx="132" cy="146" r="1.5" fill="#8B7355"/>
+      <circle cx="145" cy="146" r="1.5" fill="#8B7355"/>
+      <path d="M134 154 Q138 157 142 154" stroke="#8B7355" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <ellipse cx="128" cy="152" rx="2.5" ry="1.8" fill="#E8B5B5" opacity="0.5"/>
+      <ellipse cx="148" cy="152" rx="2.5" ry="1.8" fill="#E8B5B5" opacity="0.5"/>
+      <g fill="#F5D78A">
+        <circle cx="85" cy="130" r="1.5"/>
+        <circle cx="90" cy="175" r="1.2"/>
+        <circle cx="175" cy="120" r="1.3"/>
+        <circle cx="180" cy="185" r="1.5"/>
+      </g>
+    </g>
+
+    <!-- 해 -->
+    <g>
+      <g stroke="#E8A05C" stroke-width="2.2" stroke-linecap="round" opacity="0.7">
+        <line x1="520" y1="130" x2="520" y2="110"/>
+        <line x1="488" y1="140" x2="475" y2="128"/>
+        <line x1="552" y1="140" x2="565" y2="128"/>
+        <line x1="478" y1="173" x2="460" y2="173"/>
+        <line x1="562" y1="173" x2="580" y2="173"/>
+      </g>
+      <circle cx="520" cy="173" r="30" fill="#F5B968"/>
+      <circle cx="520" cy="173" r="24" fill="#F8CA85"/>
+      <circle cx="511" cy="170" r="1.8" fill="#8B4A1F"/>
+      <circle cx="529" cy="170" r="1.8" fill="#8B4A1F"/>
+      <path d="M513 180 Q520 185 527 180" stroke="#8B4A1F" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <ellipse cx="506" cy="177" rx="3" ry="2" fill="#F29A9A" opacity="0.6"/>
+      <ellipse cx="534" cy="177" rx="3" ry="2" fill="#F29A9A" opacity="0.6"/>
+    </g>
+
+    <ellipse cx="540" cy="200" rx="50" ry="13" fill="#FFFFFF" opacity="0.95"/>
+    <ellipse cx="148" cy="180" rx="42" ry="11" fill="#FFFFFF" opacity="0.9"/>
+
+    <!-- 구름 나루터 -->
+    <ellipse cx="340" cy="360" rx="250" ry="50" fill="url(#cloudGrad)"/>
+    <ellipse cx="170" cy="340" rx="55" ry="32" fill="#FFFFFF"/>
+    <ellipse cx="230" cy="322" rx="62" ry="38" fill="#FFFFFF"/>
+    <ellipse cx="305" cy="312" rx="70" ry="42" fill="#FFFFFF"/>
+    <ellipse cx="385" cy="310" rx="72" ry="44" fill="#FFFFFF"/>
+    <ellipse cx="460" cy="322" rx="62" ry="38" fill="#FFFFFF"/>
+    <ellipse cx="520" cy="340" rx="52" ry="32" fill="#FFFFFF"/>
+
+    <!-- 배 세 척 -->
+    <g transform="translate(180, 275)">
+      <line x1="22" y1="-30" x2="22" y2="25" stroke="#7A5B3E" stroke-width="2" stroke-linecap="round"/>
+      <path d="M22 -30 Q42 -15 38 15 L22 15 Z" fill="url(#sailGrad3)" stroke="#B87885" stroke-width="1.2"/>
+      <path d="M22 -30 L34 -26 L22 -22 Z" fill="#D97A88"/>
+      <path d="M2 25 Q6 42 18 44 L32 44 Q44 42 48 25 Z" fill="#A85F2C"/>
+      <path d="M2 25 L48 25 L44 31 L6 31 Z" fill="#7D4520"/>
+    </g>
+
+    <g transform="translate(295, 240)">
+      <line x1="45" y1="-55" x2="45" y2="45" stroke="#7A5B3E" stroke-width="3" stroke-linecap="round"/>
+      <path d="M45 -55 Q80 -30 74 20 L45 20 Z" fill="url(#sailGrad)" stroke="#C4965D" stroke-width="1.5"/>
+      <path d="M45 -35 Q14 -15 18 15 L45 15 Z" fill="url(#sailGrad2)" stroke="#C4965D" stroke-width="1.5"/>
+      <path d="M45 -55 L68 -48 L45 -42 Z" fill="#D97A88"/>
+      <path d="M2 45 Q8 75 32 79 L62 79 Q86 75 92 45 Z" fill="#BA6D3A"/>
+      <path d="M2 45 L92 45 L86 56 L8 56 Z" fill="#8E5128"/>
+      <circle cx="28" cy="65" r="4" fill="#FDF4E3"/>
+      <circle cx="47" cy="65" r="4" fill="#FDF4E3"/>
+      <circle cx="66" cy="65" r="4" fill="#FDF4E3"/>
+    </g>
+
+    <g transform="translate(430, 260)">
+      <line x1="30" y1="-42" x2="30" y2="32" stroke="#7A5B3E" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M30 -42 Q58 -22 52 18 L30 18 Z" fill="url(#sailGrad2)" stroke="#C4965D" stroke-width="1.3"/>
+      <path d="M30 -28 Q8 -12 12 14 L30 14 Z" fill="url(#sailGrad)" stroke="#C4965D" stroke-width="1.3"/>
+      <path d="M30 -42 L48 -36 L30 -30 Z" fill="#D97A88"/>
+      <path d="M2 32 Q6 55 24 58 L46 58 Q64 55 68 32 Z" fill="#A85F2C"/>
+      <path d="M2 32 L68 32 L64 40 L6 40 Z" fill="#7D4520"/>
+    </g>
+
+    <!-- 비, 눈 -->
+    <g stroke="#7FA8C9" stroke-width="2" stroke-linecap="round" opacity="0.75">
+      <line x1="130" y1="395" x2="125" y2="412"/>
+      <line x1="150" y1="405" x2="145" y2="424"/>
+      <line x1="170" y1="398" x2="165" y2="416"/>
+    </g>
+    <g fill="#FFFFFF" stroke="#B8A5D0" stroke-width="0.8">
+      <circle cx="510" cy="400" r="3.2"/>
+      <circle cx="535" cy="418" r="2.8"/>
+      <circle cx="560" cy="402" r="3"/>
+    </g>
+  </svg>
+
+  <h1 class="hero-title">구름나루</h1>
+  <p class="hero-subtitle">g u l e u m &nbsp;·&nbsp; n a r u</p>
+
+  <p class="scroll-hint">s c r o l l</p>
+</section>
+
+<!-- ═══════════ WEATHER POEM ═══════════ -->
+<section class="weather-poem" id="weather-section">
+  <!-- 서가로 바로가기 (재방문자용) -->
+  <a href="#서가" class="skip-to-library" onclick="scrollToOfferings(event)">
+    <span class="icon">⛵</span>
+    <span>서가로<span class="skip-label-long"> 바로가기</span></span>
+    <span class="arrow">→</span>
+  </a>
+
+  <div style="text-align: center; margin-bottom: 2.5rem;">
+    <p class="section-mark" style="color: var(--gold); margin-bottom: 0.6rem;">f i v e &nbsp; w e a t h e r s</p>
+    <h2 style="font-family: 'Noto Serif KR', serif; font-size: clamp(1.5rem, 3.2vw, 1.9rem); font-weight: 700; color: var(--plum-deep); letter-spacing: 0.15em; margin-bottom: 0.5rem;">오늘, 당신의 마음은?</h2>
+    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.2em; opacity: 0.8;">tap the weather of your heart</p>
+  </div>
+
+  <div class="weather-inner">
+    <div class="weather-item" onclick="openWeather('cheong')">
+      <span class="weather-symbol">晴</span>
+      <span class="weather-reading">( 청 )</span>
+      <h4>맑 음</h4>
+      <p>환한 얼굴로<br>세상을 비추는 날</p>
+    </div>
+    <div class="weather-item" onclick="openWeather('dam')">
+      <span class="weather-symbol">曇</span>
+      <span class="weather-reading">( 담 )</span>
+      <h4>흐 림</h4>
+      <p>마음이 먹먹할 때<br>곁을 지켜주는 날</p>
+    </div>
+    <div class="weather-item" onclick="openWeather('u')">
+      <span class="weather-symbol">雨</span>
+      <span class="weather-reading">( 우 )</span>
+      <h4>비</h4>
+      <p>울고 싶은 날에<br>먼저 출발하는 마음</p>
+    </div>
+    <div class="weather-item" onclick="openWeather('seol')">
+      <span class="weather-symbol">雪</span>
+      <span class="weather-reading">( 설 )</span>
+      <h4>눈</h4>
+      <p>소리 없이 내리는<br>조용한 편지</p>
+    </div>
+    <div class="weather-item" onclick="openWeather('pung')">
+      <span class="weather-symbol">風</span>
+      <span class="weather-reading">( 풍 )</span>
+      <h4>바 람</h4>
+      <p>돛을 펴라는<br>새로운 신호</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ═══════════ MANIFESTO ═══════════ -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <p class="section-mark">o u r &nbsp; s t o r y</p>
+
+    <div class="manifesto-verse">
+      <p>세상의 모든 출발은,<br>아주 작은 <span class="accent">머무름</span>에서 시작됩니다.</p>
+      <p>비는 구름에서 태어나고,<br>눈은 구름에서 잠을 깨며,<br>해는 구름에 잠시 앉았다가 다시 길을 떠납니다.</p>
+      <div class="manifesto-divider"></div>
+      <p>구름나루는<br>그 <span class="accent">짧은 쉼의 자리</span>입니다.</p>
+      <p>어디로도 떠날 수 있지만,<br>먼저 머물러 숨을 고르는 곳.<br>배는 이곳에서 돛을 고쳐 달고,<br>우리는 이곳에서 꿈에 돛을 답니다.</p>
+      <div class="manifesto-divider"></div>
+      <p>우리는 믿습니다.<br><span class="accent">모든 위대한 여정은,<br>포근한 나루에서 시작된다는 것을.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ NIGHT ═══════════ -->
+<section class="night">
+  <div class="night-stars" id="night-stars"></div>
+  <div class="night-inner">
+    <p class="section-mark">n i g h t &nbsp; f a l l s</p>
+    <h2 class="night-title">밤이 오면, 나루는 더 환해집니다</h2>
+    <div class="night-verse">
+      <p>별들이 하나둘 구름 위에 내려앉고,<br>달은 <span class="warm">가장 포근한 구름</span>을 골라 턱을 괴고 잠이 듭니다.</p>
+      <p>배마다 작은 등불이 켜지면,<br>나루는 세상에서 가장 따뜻한 항구가 됩니다.</p>
+      <p>떠날 준비가 된 이도,<br>아직 머뭇거리는 이도,<br>이 불빛 아래에서는 <span class="warm">모두 안전합니다.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ OFFERINGS ═══════════ -->
+<section class="offerings" id="offerings-section">
+  <div class="offerings-inner">
+    <p class="section-mark" style="text-align:center; color: var(--gold);">w h a t &nbsp; w e &nbsp; o f f e r</p>
+    <h2 class="offerings-title">구름나루가 띄우는 배들</h2>
+    <p class="offerings-subtitle">tap to open &nbsp;·&nbsp; 눌러서 펼쳐보세요</p>
+
+    <div class="offerings-grid">
+      <div class="offering-card card-peach" onclick="openLibrary('poetry')">
+        <svg class="offering-icon" viewBox="0 0 60 60">
+          <!-- 민들레 줄기 -->
+          <line x1="30" y1="52" x2="30" y2="32" stroke="#98A58A" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- 잎 -->
+          <path d="M30 42 Q24 40 22 44 Q26 44 30 42" fill="#98A58A" opacity="0.8"/>
+          <!-- 민들레 솜털 중심 -->
+          <circle cx="30" cy="24" r="3" fill="#F5D78A"/>
+          <!-- 솜털들 (방사형) -->
+          <g stroke="#C4965D" stroke-width="0.8" stroke-linecap="round" opacity="0.75">
+            <line x1="30" y1="24" x2="30" y2="12"/>
+            <line x1="30" y1="24" x2="38" y2="14"/>
+            <line x1="30" y1="24" x2="42" y2="20"/>
+            <line x1="30" y1="24" x2="44" y2="26"/>
+            <line x1="30" y1="24" x2="40" y2="34"/>
+            <line x1="30" y1="24" x2="22" y2="14"/>
+            <line x1="30" y1="24" x2="18" y2="20"/>
+            <line x1="30" y1="24" x2="16" y2="26"/>
+            <line x1="30" y1="24" x2="20" y2="34"/>
+          </g>
+          <!-- 솜털 끝 동그라미 -->
+          <g fill="#FFFBE8" stroke="#D97A88" stroke-width="0.5">
+            <circle cx="30" cy="12" r="1.5"/>
+            <circle cx="38" cy="14" r="1.5"/>
+            <circle cx="42" cy="20" r="1.5"/>
+            <circle cx="44" cy="26" r="1.5"/>
+            <circle cx="40" cy="34" r="1.5"/>
+            <circle cx="22" cy="14" r="1.5"/>
+            <circle cx="18" cy="20" r="1.5"/>
+            <circle cx="16" cy="26" r="1.5"/>
+            <circle cx="20" cy="34" r="1.5"/>
+          </g>
+          <!-- 날아가는 솜털 하나 -->
+          <circle cx="50" cy="10" r="1.5" fill="#FFFBE8" stroke="#D97A88" stroke-width="0.5" opacity="0.7"/>
+        </svg>
+        <h3>나루의 동시방</h3>
+        <span class="latin">poetry room</span>
+        <p>짧은 몇 줄에 담긴 반짝임. 아이의 눈과 어른의 마음이 만나는 자리, 동시 한 편을 꺼내 읽어보세요.</p>
+        <span class="card-cta">동시 펼쳐보기 →</span>
+      </div>
+      <div class="offering-card card-sky" onclick="openLibrary('fairytale')">
+        <svg class="offering-icon" viewBox="0 0 60 60">
+          <ellipse cx="30" cy="38" rx="22" ry="5" fill="#E8D5E3"/>
+          <ellipse cx="20" cy="33" rx="10" ry="6" fill="#FFFFFF"/>
+          <ellipse cx="30" cy="30" rx="12" ry="7" fill="#FFFFFF"/>
+          <ellipse cx="42" cy="33" rx="10" ry="6" fill="#FFFFFF"/>
+          <line x1="30" y1="15" x2="30" y2="28" stroke="#7A5B3E" stroke-width="1.5"/>
+          <path d="M30 15 Q38 22 36 28 L30 28 Z" fill="#F2CC94" stroke="#C4965D" stroke-width="1"/>
+        </svg>
+        <h3>AI 동화 여행</h3>
+        <span class="latin">fairy tale voyage</span>
+        <p>어른이 되어서도 동화는 필요합니다. 먼저 혼자 조용히 읽어보시고, 곁에 아이가 있다면 함께 펼쳐보세요.</p>
+        <span class="card-cta">다섯 편 펼쳐보기 →</span>
+      </div>
+      <div class="offering-card card-rose" onclick="openLibrary('healing')">
+        <svg class="offering-icon" viewBox="0 0 60 60">
+          <path d="M30 12 C22 12 18 18 18 24 C18 34 30 48 30 48 C30 48 42 34 42 24 C42 18 38 12 30 12Z" fill="#D97A88" opacity="0.8"/>
+          <circle cx="30" cy="24" r="5" fill="#FFFBE8"/>
+        </svg>
+        <h3>마음의 나루</h3>
+        <span class="latin">heart anchorage</span>
+        <p>하루를 살아낸 모든 이에게 건네는 조용한 독백. 당신의 저녁에 다정하게 닿기를 바라며.</p>
+        <span class="card-cta">다섯 편 펼쳐보기 →</span>
+      </div>
+      <div class="offering-card card-sage" onclick="openLibrary('essay')">
+        <svg class="offering-icon" viewBox="0 0 60 60">
+          <rect x="14" y="12" width="32" height="38" rx="2" fill="#FFF8E7" stroke="#C4965D" stroke-width="1.5"/>
+          <line x1="20" y1="22" x2="40" y2="22" stroke="#8B7BA3" stroke-width="1"/>
+          <line x1="20" y1="28" x2="40" y2="28" stroke="#8B7BA3" stroke-width="1"/>
+          <line x1="20" y1="34" x2="36" y2="34" stroke="#8B7BA3" stroke-width="1"/>
+          <line x1="20" y1="40" x2="40" y2="40" stroke="#8B7BA3" stroke-width="1"/>
+          <path d="M24 16 Q30 14 36 16" stroke="#D97A88" stroke-width="1.2" fill="none"/>
+        </svg>
+        <h3>나루의 편지함</h3>
+        <span class="latin">letters from naru</span>
+        <p>바람처럼 도착하고 구름처럼 머무는 짧은 글들. 읽는 이의 하루 어딘가에 작은 쉼표가 되길 바라며.</p>
+        <span class="card-cta">편지 꺼내 읽기 →</span>
+      </div>
+      <div class="offering-card card-lavender" onclick="openLibrary('resthouse')">
+        <svg class="offering-icon" viewBox="0 0 60 60">
+          <!-- 찻잔 -->
+          <path d="M18 26 L18 40 Q18 46 24 46 L36 46 Q42 46 42 40 L42 26 Z" fill="#FFF8E7" stroke="#C4965D" stroke-width="1.5"/>
+          <path d="M42 30 Q48 30 48 34 Q48 38 42 38" fill="none" stroke="#C4965D" stroke-width="1.5"/>
+          <ellipse cx="30" cy="26" rx="12" ry="3" fill="#E8B591"/>
+          <!-- 김 -->
+          <path d="M24 20 Q26 16 24 12" stroke="#D97A88" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M30 18 Q32 14 30 10" stroke="#D97A88" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M36 20 Q38 16 36 12" stroke="#D97A88" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h3>나루의 쉼터</h3>
+        <span class="latin">resting house</span>
+        <p>책 한 구절, 그림 한 점, 피식 웃는 짧은 글, 1분 숨 고르기. 가장 가벼운 쉼이 필요할 때 들러주세요.</p>
+        <span class="card-cta">네 개의 방 둘러보기 →</span>
+      </div>
+    
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="cta">
+  <div class="cta-inner">
+    <p class="section-mark" style="color: var(--gold-soft);">s e t &nbsp; s a i l</p>
+    <p class="cta-quote">
+      돛을 올리세요.<br>
+      구름나루는 <span class="gold">언제나</span>,<br>
+      당신의 출발을 기다리고 있습니다.
+    </p>
+    <p class="cta-signoff">구 름 나 루 &nbsp;&nbsp;·&nbsp;&nbsp; g u l e u m n a r u</p>
+    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; letter-spacing: 0.2em; color: var(--moon); margin-top: 2rem; opacity: 0.9;">by 하윤쌤</p>
+  </div>
+</section>
+
+<!-- ═══════════ LIBRARY MODALS ═══════════ -->
+
+<!-- AI 동화 여행 -->
+<div class="library-modal" id="library-fairytale" onclick="closeLibraryIfBackdrop(event)">
+  <div class="library-content">
+    <button class="modal-close" onclick="closeLibrary()">×</button>
+    <div class="library-header">
+      <span class="latin">f a i r y &nbsp; t a l e &nbsp; v o y a g e</span>
+      <h3>AI 동화 여행</h3>
+      <p>어른의 마음에 먼저 닿는 이야기들.<br>곁의 아이와 함께 읽어도 좋은 동화.</p>
+      <p style="margin-top: 1rem; font-size: 0.85rem; font-style: italic; color: var(--gold); letter-spacing: 0.05em;">
+        — 먼저 조용히 혼자 읽어보세요.<br>마음이 움직였다면, 곁에 있는 아이와 다시 펼쳐보셔도 좋습니다. —
+      </p>
+    </div>
+    <ul class="library-list">
+      <li class="library-item" onclick="openStory('stories/주말에만_만나는_아빠의_시계.html')">
+        <span class="library-item-number">Ⅰ</span>
+        <div class="library-item-text">
+          <div class="library-item-title">주말에만 만나는 아빠의 시계</div>
+          <div class="library-item-meta">째깍째깍, 일주일에 한 번 돌아오는 토요일</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openStory('stories/아빠가_둘인_건_비밀이야.html')">
+        <span class="library-item-number">Ⅱ</span>
+        <div class="library-item-text">
+          <div class="library-item-title">아빠가 둘인 건 비밀이야</div>
+          <div class="library-item-meta">핏줄보다 진한, 함께한 시간 이야기</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openStory('stories/바다를_듣는_마음.html')">
+        <span class="library-item-number">Ⅲ</span>
+        <div class="library-item-text">
+          <div class="library-item-title">바다를 듣는 마음</div>
+          <div class="library-item-meta">소리 없이 찾아오는 것들에 대하여</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openStory('stories/시간을_엮는_사람.html')">
+        <span class="library-item-number">Ⅳ</span>
+        <div class="library-item-text">
+          <div class="library-item-title">시간을 엮는 사람</div>
+          <div class="library-item-meta">과거와 미래 사이에 선 어느 날의 이야기</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openStory('stories/마음을_번역하는_일.html')">
+        <span class="library-item-number">Ⅴ</span>
+        <div class="library-item-text">
+          <div class="library-item-title">마음을 번역하는 일</div>
+          <div class="library-item-meta">말해지지 않은 마음을 읽어내는 법</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+    </ul>
+    <p class="library-footer-note">— 다섯 편의 이야기가 당신을 기다립니다 —</p>
+  </div>
+</div>
+
+<!-- 마음의 나루 -->
+<div class="library-modal" id="library-healing" onclick="closeLibraryIfBackdrop(event)">
+  <div class="library-content">
+    <button class="modal-close" onclick="closeLibrary()">×</button>
+    <div class="library-header">
+      <span class="latin">h e a r t &nbsp; a n c h o r a g e</span>
+      <h3>마음의 나루</h3>
+      <p>하루를 살아낸 모든 이에게.<br>오늘의 당신에게 건네는 조용한 독백.</p>
+    </div>
+    <ul class="library-list">
+      <li class="library-item" onclick="openReader('healing-1')">
+        <span class="library-item-number">01</span>
+        <div class="library-item-text">
+          <div class="library-item-title">오늘도 수고했어요</div>
+          <div class="library-item-meta">스스로에게 건네는 저녁의 인사</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('healing-2')">
+        <span class="library-item-number">02</span>
+        <div class="library-item-text">
+          <div class="library-item-title">괜찮지 않아도 괜찮아요</div>
+          <div class="library-item-meta">힘들다고 말해도 되는 날에 대하여</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('healing-3')">
+        <span class="library-item-number">03</span>
+        <div class="library-item-text">
+          <div class="library-item-title">천천히 가도 괜찮아요</div>
+          <div class="library-item-meta">빨리 가지 못하는 날에 읽는 글</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('healing-4')">
+        <span class="library-item-number">04</span>
+        <div class="library-item-text">
+          <div class="library-item-title">잠시 멈춰도 괜찮아요</div>
+          <div class="library-item-meta">숨을 고를 시간이 필요한 당신에게</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('healing-5')">
+        <span class="library-item-number">05</span>
+        <div class="library-item-text">
+          <div class="library-item-title">당신이 거기 있어줘서</div>
+          <div class="library-item-meta">존재 자체로 이미 충분한 사람에게</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+    </ul>
+    <p class="library-footer-note">— 다섯 편의 다정한 편지가 당신을 기다립니다 —</p>
+  </div>
+</div>
+
+<!-- 나루의 편지함 -->
+<div class="library-modal" id="library-essay" onclick="closeLibraryIfBackdrop(event)">
+  <div class="library-content">
+    <button class="modal-close" onclick="closeLibrary()">×</button>
+    <div class="library-header">
+      <span class="latin">l e t t e r s &nbsp; f r o m &nbsp; n a r u</span>
+      <h3>나루의 편지함</h3>
+      <p>바람처럼 도착하는 짧은 편지들.<br>읽는 이의 하루에 작은 쉼표가 되길.</p>
+    </div>
+    <ul class="library-list">
+      <li class="library-item" onclick="openReader('essay-1')">
+        <span class="library-item-number">✦</span>
+        <div class="library-item-text">
+          <div class="library-item-title">비 오는 날의 편지</div>
+          <div class="library-item-meta">젖어도 괜찮은 하루에 대하여</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('essay-2')">
+        <span class="library-item-number">✦</span>
+        <div class="library-item-text">
+          <div class="library-item-title">구름이 가르쳐준 것</div>
+          <div class="library-item-meta">머무는 법, 흘러가는 법</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('essay-3')">
+        <span class="library-item-number">✦</span>
+        <div class="library-item-text">
+          <div class="library-item-title">나루에서 보낸 저녁</div>
+          <div class="library-item-meta">하루를 내려놓는 시간에게</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('essay-4')">
+        <span class="library-item-number">✦</span>
+        <div class="library-item-text">
+          <div class="library-item-title">떠나는 배에게</div>
+          <div class="library-item-meta">돌아오지 않아도 괜찮다는 말</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+    </ul>
+    <p class="library-footer-note">— 새 편지가 계속 도착하고 있습니다 —</p>
+  </div>
+</div>
+
+<!-- 나루의 쉼터 (4가지 방) -->
+<div class="library-modal" id="library-resthouse" onclick="closeLibraryIfBackdrop(event)">
+  <div class="library-content">
+    <button class="modal-close" onclick="closeLibrary()">×</button>
+    <div class="library-header">
+      <span class="latin">r e s t i n g &nbsp; h o u s e</span>
+      <h3>나루의 쉼터</h3>
+      <p>가장 가벼운 쉼이 필요할 때.<br>네 개의 작은 방이 당신을 기다립니다.</p>
+    </div>
+    <ul class="library-list">
+      <li class="library-item" onclick="openReader('rest-book')">
+        <span class="library-item-number">📚</span>
+        <div class="library-item-text">
+          <div class="library-item-title">나루의 책장</div>
+          <div class="library-item-meta">오늘의 책 한 구절, 마음을 흔드는 문장들</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('rest-gallery')">
+        <span class="library-item-number">🎨</span>
+        <div class="library-item-text">
+          <div class="library-item-title">나루의 쇼창</div>
+          <div class="library-item-meta">그림 한 점과 함께 걷는 짧은 산책</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('rest-smile')">
+        <span class="library-item-number">😊</span>
+        <div class="library-item-text">
+          <div class="library-item-title">나루의 웃음방</div>
+          <div class="library-item-meta">피식 웃게 되는 일상의 작은 장면들</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('rest-breath')">
+        <span class="library-item-number">🧘</span>
+        <div class="library-item-text">
+          <div class="library-item-title">나루의 숨터</div>
+          <div class="library-item-meta">1분 안에 마음을 고르는 호흡 가이드</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+    </ul>
+    <p class="library-footer-note">— 원하는 방을 골라 들어가세요 —</p>
+  </div>
+</div>
+
+<!-- 나루의 동시방 -->
+<div class="library-modal" id="library-poetry" onclick="closeLibraryIfBackdrop(event)">
+  <div class="library-content">
+    <button class="modal-close" onclick="closeLibrary()">×</button>
+    <div class="library-header">
+      <span class="latin">p o e t r y &nbsp; r o o m</span>
+      <h3>나루의 동시방</h3>
+      <p>가장 짧은 글이<br>가장 오래 마음에 머뭅니다.</p>
+      <p style="margin-top: 1rem; font-size: 0.85rem; font-style: italic; color: var(--gold); letter-spacing: 0.05em;">
+        — 동시 작가 하윤쌤이 쓴 작은 시들. —
+      </p>
+    </div>
+    <ul class="library-list" id="poetry-list">
+      <li class="library-item" onclick="openReader('poem-1')">
+        <span class="library-item-number">🌸</span>
+        <div class="library-item-text">
+          <div class="library-item-title">걱정 하지마</div>
+          <div class="library-item-meta">비바람도 나무도, 자기의 운동을 하는 중</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('poem-2')">
+        <span class="library-item-number">🌿</span>
+        <div class="library-item-text">
+          <div class="library-item-title">쓴 약을 먹으며</div>
+          <div class="library-item-meta">마음대로 되지 않는 것들 사이의 씁쓸함</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+      <li class="library-item" onclick="openReader('poem-3')">
+        <span class="library-item-number">🐾</span>
+        <div class="library-item-text">
+          <div class="library-item-title">고양이 할아버지</div>
+          <div class="library-item-meta">같은 시간을 다른 속도로 살아가는 우리</div>
+        </div>
+        <span class="library-item-arrow">→</span>
+      </li>
+    </ul>
+    <p class="library-footer-note">— 세 편의 동시, 더 많은 시가 곧 도착합니다 —</p>
+
+    <!-- 작가 약력 배지 -->
+    <div style="text-align: center; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px dashed var(--lavender-deep);">
+      <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); letter-spacing: 0.3em; font-size: 0.8rem; margin-bottom: 0.8rem;">
+        about the poet
+      </p>
+      <p style="font-family: 'Noto Serif KR', serif; color: var(--plum-deep); font-weight: 500; margin-bottom: 0.4rem;">
+        하윤쌤
+      </p>
+      <p style="font-family: 'Noto Serif KR', serif; color: var(--plum); font-size: 0.88rem; line-height: 1.8; font-style: italic;">
+        2020년 아동문예 등단<br>
+        아동문학회 활동 중<br>
+        동시집 『학교가 깨어났다』 (2023, 공저)
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ READER MODAL (글 읽기) ═══════════ -->
+<div class="reader-modal" id="reader-modal" onclick="closeReaderIfBackdrop(event)">
+  <div class="reader-content">
+    <button class="modal-close" onclick="closeReader()">×</button>
+    <div class="reader-header">
+      <div class="reader-number" id="reader-number"></div>
+      <h3 class="reader-title" id="reader-title"></h3>
+      <p class="reader-meta" id="reader-meta"></p>
+    </div>
+    <div class="reader-body" id="reader-body"></div>
+    <div class="reader-signature">
+      <span class="from">from</span>
+      구름나루 · 하윤쌤
+    </div>
+    <div class="reader-footer">
+      <button class="reader-btn secondary" onclick="closeReader()">← 목록으로 돌아가기</button>
+      <button class="reader-btn" onclick="nextReading()" id="reader-next-btn">다음 이야기 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ WEATHER MODALS ═══════════ -->
+<div class="weather-modal" id="modal-cheong" onclick="closeIfBackdrop(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeWeather()">×</button>
+    <div class="modal-symbol">晴</div>
+    <div class="modal-reading">( 청 )</div>
+    <h3 class="modal-title">맑 음</h3>
+    <div class="modal-divider"></div>
+    <p class="modal-letter-intro">오늘의 당신에게</p>
+    <div class="modal-poem">
+      오늘의 당신은<br>
+      햇살을 담을 그릇이<br>
+      조금 더 큰 사람입니다.<br><br>
+      바람 없이도<br>
+      스스로 빛나는 날이 있어요.<br>
+      그 빛을 아껴두지 마세요.<br><br>
+      누군가의 흐린 하늘에<br>
+      작은 창문이 되어줄 수 있거든요.
+    </div>
+    <p class="modal-signoff">from &nbsp;구름나루</p>
+    <button class="modal-return" onclick="closeWeather()">← 날씨로 돌아가기</button>
+    <p class="modal-return-hint">다른 마음의 날씨도 열어보세요</p>
+  </div>
+</div>
+
+<div class="weather-modal" id="modal-dam" onclick="closeIfBackdrop(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeWeather()">×</button>
+    <div class="modal-symbol">曇</div>
+    <div class="modal-reading">( 담 )</div>
+    <h3 class="modal-title">흐 림</h3>
+    <div class="modal-divider"></div>
+    <p class="modal-letter-intro">마음이 먹먹한 당신에게</p>
+    <div class="modal-poem">
+      괜찮아요,<br>
+      하늘이 늘 맑을 필요는 없어요.<br><br>
+      구름은 비를 참고 있는 것이 아니라<br>
+      그저 <em>잠시 머무는 중</em>이랍니다.<br><br>
+      오늘 마음이 무겁다면<br>
+      그건 당신 안에 무언가<br>
+      조용히 자라고 있다는 뜻이에요.<br><br>
+      서두르지 마세요.<br>
+      구름나루는 기다릴 줄 압니다.
+    </div>
+    <p class="modal-signoff">from &nbsp;구름나루</p>
+    <button class="modal-return" onclick="closeWeather()">← 날씨로 돌아가기</button>
+    <p class="modal-return-hint">다른 마음의 날씨도 열어보세요</p>
+  </div>
+</div>
+
+<div class="weather-modal" id="modal-u" onclick="closeIfBackdrop(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeWeather()">×</button>
+    <div class="modal-symbol">雨</div>
+    <div class="modal-reading">( 우 )</div>
+    <h3 class="modal-title">비</h3>
+    <div class="modal-divider"></div>
+    <p class="modal-letter-intro">울고 싶은 당신에게</p>
+    <div class="modal-poem">
+      울어도 괜찮아요.<br><br>
+      비는 하늘이 꾹 참았던<br>
+      말들이 흘러내리는 것이랍니다.<br><br>
+      당신의 눈물도 그래요.<br>
+      부끄러운 것이 아니라<br>
+      <em>말하지 못한 마음이</em><br>
+      <em>겨우 길을 찾은 것</em>이에요.<br><br>
+      다 흘려보내고 나면<br>
+      공기는 한결 맑아질 거예요.
+    </div>
+    <p class="modal-signoff">from &nbsp;구름나루</p>
+    <button class="modal-return" onclick="closeWeather()">← 날씨로 돌아가기</button>
+    <p class="modal-return-hint">다른 마음의 날씨도 열어보세요</p>
+  </div>
+</div>
+
+<div class="weather-modal" id="modal-seol" onclick="closeIfBackdrop(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeWeather()">×</button>
+    <div class="modal-symbol">雪</div>
+    <div class="modal-reading">( 설 )</div>
+    <h3 class="modal-title">눈</h3>
+    <div class="modal-divider"></div>
+    <p class="modal-letter-intro">조용한 당신에게</p>
+    <div class="modal-poem">
+      소리 내지 않아도 괜찮아요.<br><br>
+      눈은 가장 조용한 목소리로<br>
+      세상을 <em>하얗게 덮어줍니다.</em><br><br>
+      당신의 고요함도 그래요.<br>
+      비어 있는 것이 아니라<br>
+      누군가의 소란스러운 하루를<br>
+      가만히 품어주고 있어요.<br><br>
+      오늘은 당신이 눈입니다.
+    </div>
+    <p class="modal-signoff">from &nbsp;구름나루</p>
+    <button class="modal-return" onclick="closeWeather()">← 날씨로 돌아가기</button>
+    <p class="modal-return-hint">다른 마음의 날씨도 열어보세요</p>
+  </div>
+</div>
+
+<div class="weather-modal" id="modal-pung" onclick="closeIfBackdrop(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeWeather()">×</button>
+    <div class="modal-symbol">風</div>
+    <div class="modal-reading">( 풍 )</div>
+    <h3 class="modal-title">바 람</h3>
+    <div class="modal-divider"></div>
+    <p class="modal-letter-intro">떠나고 싶은 당신에게</p>
+    <div class="modal-poem">
+      돛을 올리세요.<br><br>
+      바람은 당신을 흔드는 것이 아니라<br>
+      <em>당신의 등을 밀어주는 중</em>이에요.<br><br>
+      두렵다면,<br>
+      떨리는 채로 떠나도 괜찮아요.<br>
+      나루는 언제든<br>
+      돌아올 자리를 비워둡니다.<br><br>
+      바람이 부는 날엔<br>
+      머무르지 마세요.
+    </div>
+    <p class="modal-signoff">from &nbsp;구름나루</p>
+    <button class="modal-return" onclick="closeWeather()">← 날씨로 돌아가기</button>
+    <p class="modal-return-hint">다른 마음의 날씨도 열어보세요</p>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <p class="name">구름나루</p>
+  <p class="tagline">어디로든 떠날 수 있는 곳</p>
+</footer>
+
+<script>
+  // 별 랜덤 배치
+  const starContainer = document.getElementById('night-stars');
+  if (starContainer) {
+    for (let i = 0; i < 60; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2.5 + 0.5;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      starContainer.appendChild(star);
+    }
+  }
+
+  // 매니페스토 스크롤 등장 효과
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.manifesto-verse p').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.15) + 's';
+    observer.observe(el);
+  });
+
+  // 서가로 바로가기 (재방문자용 스킵 버튼)
+  function scrollToOfferings(event) {
+    if (event) event.preventDefault();
+    const section = document.getElementById('offerings-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // 날씨 모달 열기/닫기
+  function openWeather(id) {
+    const modal = document.getElementById('modal-' + id);
+    if (modal) {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeWeather() {
+    const wasOpen = document.querySelector('.weather-modal.open');
+    document.querySelectorAll('.weather-modal').forEach(m => m.classList.remove('open'));
+    document.body.style.overflow = '';
+    // 모달이 열려 있었다면 날씨 섹션으로 부드럽게 스크롤
+    if (wasOpen) {
+      setTimeout(() => {
+        const section = document.getElementById('weather-section');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+  }
+
+  function closeIfBackdrop(event) {
+    if (event.target.classList.contains('weather-modal')) {
+      closeWeather();
+    }
+  }
+
+  // ESC 키로 닫기
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeWeather(); closeLibrary(); closeReader(); }
+  });
+
+  // 라이브러리(콘텐츠 목록) 모달 열기/닫기
+  function openLibrary(id) {
+    const modal = document.getElementById('library-' + id);
+    if (modal) {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLibrary() {
+    const wasOpen = document.querySelector('.library-modal.open');
+    document.querySelectorAll('.library-modal').forEach(m => m.classList.remove('open'));
+    document.body.style.overflow = '';
+    if (wasOpen) {
+      setTimeout(() => {
+        const section = document.querySelector('.offerings');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+  }
+
+  function closeLibraryIfBackdrop(event) {
+    if (event.target.classList.contains('library-modal')) {
+      closeLibrary();
+    }
+  }
+
+  // 개별 이야기 열기 - 실제 파일 경로로 새 탭에서 열림
+  function openStory(path) {
+    window.open(path, '_blank');
+  }
+
+  // ─────────── 글 데이터 ───────────
+  const readings = {
+    'healing-1': {
+      number: 'ㅡ 01 ㅡ',
+      title: '오늘도 수고했어요',
+      meta: '스스로에게 건네는 저녁의 인사',
+      body: `
+        <p>하루가 저물어 갑니다.<br>
+        오늘은 어떤 하루였나요.</p>
+
+        <p>누군가에게 잘 보이려 애썼을지도 모르고,<br>
+        아무도 알아주지 않는 일을 묵묵히 해냈을지도 모릅니다.<br>
+        작은 실수에 마음이 오래 눌려 있었을 수도 있고,<br>
+        별일 아닌 한마디에 오후가 통째로 흔들렸을 수도 있어요.</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>그런데 말이에요.<br>
+        당신은 오늘, <span class="highlight">여기까지 걸어왔습니다.</span></p>
+
+        <p>대단한 성취가 없어도 괜찮아요.<br>
+        눈에 보이는 결과가 없어도 괜찮아요.<br>
+        그저 아침에 일어나 하루를 시작했고,<br>
+        지금 이 저녁에 도착했다는 것 —<br>
+        그것만으로도 이미 충분한 일입니다.</p>
+
+        <p>세상은 당신의 수고를 다 알지 못해요.<br>
+        그래서 오늘은 당신이 스스로에게<br>
+        조용히 말해주세요.</p>
+
+        <span class="verse">
+          "오늘도 수고했어요.<br>
+          잘 살아냈어요."
+        </span>
+
+        <p>이 한마디가<br>
+        내일을 건너갈 작은 배가 되어줄 거예요.</p>
+      `
+    },
+
+    'healing-2': {
+      number: 'ㅡ 02 ㅡ',
+      title: '괜찮지 않아도 괜찮아요',
+      meta: '힘들다고 말해도 되는 날에 대하여',
+      body: `
+        <p>"괜찮아요."<br>
+        오늘도 몇 번이나 이 말을 하셨나요.</p>
+
+        <p>정말 괜찮은 날도 있었겠지만,<br>
+        전혀 괜찮지 않았는데<br>
+        습관처럼 흘려보낸 "괜찮아요"도 많았을 거예요.</p>
+
+        <p>누구에게 걱정을 끼치기 싫어서,<br>
+        약한 모습 보이기 싫어서,<br>
+        혹은 말한다고 달라질 게 없어서.</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>하지만 오늘만큼은<br>
+        조금 다르게 말해봐도 괜찮아요.</p>
+
+        <span class="verse">
+          "사실은<br>
+          오늘 많이 힘들었어요."
+        </span>
+
+        <p>이 문장을 속으로라도 한 번 말해보세요.<br>
+        누군가에게 전하지 못해도 괜찮습니다.<br>
+        그저 <span class="highlight">스스로가 스스로의 마음을 알아주는 것</span>,<br>
+        그게 먼저예요.</p>
+
+        <p>힘든 걸 힘들다고 말할 수 있는 사람이<br>
+        결국 가장 단단한 사람입니다.</p>
+
+        <p>비가 내리는 날엔 우산을 펴는 것처럼,<br>
+        마음이 흐린 날엔<br>
+        스스로에게 다정해져도 괜찮아요.</p>
+
+        <p>괜찮지 않은 당신을<br>
+        구름나루는 가만히 알아주고 있습니다.</p>
+      `
+    },
+
+    'healing-3': {
+      number: 'ㅡ 03 ㅡ',
+      title: '천천히 가도 괜찮아요',
+      meta: '빨리 가지 못하는 날에 읽는 글',
+      body: `
+        <p>모두가 앞서가는 것처럼 보이는 날이 있어요.<br>
+        누군가는 새 소식을 전하고,<br>
+        누군가는 성취를 자랑하고,<br>
+        누군가는 어제보다 한 걸음 더 나아간 듯 보입니다.</p>
+
+        <p>그럴 때면 마음이 조급해져요.<br>
+        나만 제자리인 것 같고,<br>
+        나만 뒤처지는 것 같고,<br>
+        나만 아직 도착하지 못한 것 같고.</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>하지만 한번 생각해 볼까요.</p>
+
+        <p>봄에 피는 꽃이 있고<br>
+        여름에 피는 꽃이 있고<br>
+        가을에야 향기를 내는 꽃도 있어요.<br>
+        <span class="highlight">겨울에 더 단단해지는 나무</span>도 있고요.</p>
+
+        <p>누구도 꽃에게 "왜 늦게 피니"라고 묻지 않아요.<br>
+        꽃은 그저 자기의 때에 피어납니다.</p>
+
+        <p>당신도 그래요.<br>
+        당신의 속도는 틀린 게 아니라<br>
+        당신만의 시간표일 뿐입니다.</p>
+
+        <span class="verse">
+          천천히 가도 괜찮아요.<br>
+          도착지는 달라도<br>
+          모두가 자기 길을 가고 있으니까요.
+        </span>
+
+        <p>오늘 한 걸음도 나아가지 못했다 해도<br>
+        그건 멈춘 게 아니라<br>
+        <span class="highlight">뿌리를 내리는 중</span>이에요.</p>
+
+        <p>구름나루는 당신의 속도를 재촉하지 않습니다.<br>
+        머무르고 싶은 만큼 머물러도 됩니다.</p>
+      `
+    },
+
+    'healing-4': {
+      number: 'ㅡ 04 ㅡ',
+      title: '잠시 멈춰도 괜찮아요',
+      meta: '숨을 고를 시간이 필요한 당신에게',
+      body: `
+        <p>계속 달려오셨죠.</p>
+
+        <p>해야 할 일들이 줄을 서 있고,<br>
+        챙겨야 할 사람들이 있고,<br>
+        놓쳐선 안 되는 일정이 있고.</p>
+
+        <p>그래서 하루의 끝에는<br>
+        내가 무엇을 좋아하는지도<br>
+        잘 기억나지 않을 때가 있어요.</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>그럴 땐, 잠시 멈추셔도 됩니다.</p>
+
+        <p>세상은 당신이 잠깐 멈춘다고 해서<br>
+        무너지지 않아요.<br>
+        오히려 당신이 너무 오래 달려서<br>
+        <span class="highlight">스스로가 무너질까 봐</span><br>
+        걱정하고 있을지도 몰라요.</p>
+
+        <p>숨 한 번 깊게 들이쉬어 보세요.<br>
+        창문 너머 하늘을 가만히 올려다보세요.<br>
+        따뜻한 차 한 잔을 손에 쥐어보세요.</p>
+
+        <span class="verse">
+          멈추는 것은 게으름이 아닙니다.<br>
+          그것은 다시 걷기 위한<br>
+          가장 지혜로운 준비예요.
+        </span>
+
+        <p>구름도 하늘을 가로지르다<br>
+        어느 나루에선가 잠시 머뭅니다.<br>
+        그 짧은 쉼이 있기에<br>
+        다시 먼 길을 갈 수 있어요.</p>
+
+        <p>오늘, 당신만의 구름나루에<br>
+        잠시 내려서 숨을 고르세요.<br>
+        서두르지 않아도, 늦지 않습니다.</p>
+      `
+    },
+
+    'healing-5': {
+      number: 'ㅡ 05 ㅡ',
+      title: '당신이 거기 있어줘서',
+      meta: '존재 자체로 이미 충분한 사람에게',
+      body: `
+        <p>당신은 오늘 무엇을 했는지 기억하시나요.</p>
+
+        <p>무언가를 해내야만<br>
+        의미 있는 하루였다고 느끼는 습관,<br>
+        혹시 당신에게도 있지 않나요.</p>
+
+        <p>아무것도 하지 않은 날은 왠지 미안하고,<br>
+        쉬고 있으면 죄책감이 들고,<br>
+        성과가 없으면 스스로가 작게 느껴지고.</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>그런데 말이에요.<br>
+        당신이 세상에 주는 가장 큰 것은<br>
+        <span class="highlight">당신이 거기 있어준다는 사실</span>이에요.</p>
+
+        <p>당신의 존재만으로<br>
+        안심하는 사람이 있습니다.<br>
+        당신의 목소리만으로<br>
+        위로받는 사람이 있어요.<br>
+        당신이 그 자리에 있어줘서<br>
+        비로소 완성되는 풍경이 있습니다.</p>
+
+        <span class="verse">
+          당신은<br>
+          해야 할 일들의 총합이 아니에요.<br>
+          당신은 그저 당신이라는 것만으로<br>
+          이미 충분한 사람입니다.
+        </span>
+
+        <p>오늘 아무것도 하지 않았다 해도 괜찮아요.<br>
+        숨을 쉬었고, 하루를 지나왔고,<br>
+        누군가를 생각했고, 무언가를 느꼈다면 —<br>
+        그것만으로 당신의 하루는<br>
+        결코 비어있지 않았습니다.</p>
+
+        <p>구름나루는 오늘도 기억합니다.<br>
+        당신이 거기 있어줘서<br>
+        이 세상이 조금 더 다정하다는 것을.</p>
+      `
+    },
+
+    'essay-1': {
+      number: '✦',
+      title: '비 오는 날의 편지',
+      meta: '젖어도 괜찮은 하루에 대하여',
+      body: `
+        <p>비 오는 날에는<br>
+        모든 것이 조금 느려져요.</p>
+
+        <p>걸음도 느리고, 말도 느리고,<br>
+        생각도 한 박자 천천히 흘러갑니다.</p>
+
+        <p>어쩌면 비는<br>
+        세상에게 <span class="highlight">"오늘은 좀 쉬렴"</span>이라고<br>
+        말해주는 건지도 몰라요.</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>우산을 펴지 않고<br>
+        잠깐 비를 맞아보셨나요.</p>
+
+        <p>처음엔 당황스럽지만<br>
+        이내 알게 됩니다.<br>
+        젖는다는 건 그리 무서운 일이 아니에요.</p>
+
+        <p>옷은 마르고,<br>
+        머리도 다시 정리되고,<br>
+        하루는 또 흘러갑니다.</p>
+
+        <span class="verse">
+          오늘 조금 젖었다고 해서<br>
+          당신이 망가지는 건 아니에요.
+        </span>
+
+        <p>눈물 한 번 흘린다고,<br>
+        실수 한 번 했다고,<br>
+        약한 모습 보였다고 해서<br>
+        당신이 작아지는 것도 아닙니다.</p>
+
+        <p>비는 그저<br>
+        땅을 촉촉하게 적시고<br>
+        다음 계절을 준비하는 일이에요.</p>
+
+        <p>당신의 눈물도 그렇습니다.<br>
+        <span class="highlight">마음의 땅을 부드럽게 풀어주고</span><br>
+        내일의 싹을 틔우는 일이에요.</p>
+
+        <p>오늘은 편히 젖으셔도 됩니다.
+      `
+    },
+
+    'essay-2': {
+      number: '✦',
+      title: '구름이 가르쳐준 것',
+      meta: '머무는 법, 흘러가는 법',
+      body: `
+        <p>하늘을 오래 바라본 적 있으신가요.</p>
+
+        <p>구름은 한곳에 머무는 것 같다가도<br>
+        어느새 모양을 바꾸고,<br>
+        어느새 흘러가 있어요.</p>
+
+        <p>붙잡으려 하면 사라지고,<br>
+        놓아버리면 또 다른 모습으로 나타납니다.</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>구름은 이렇게 말하는 것 같아요.</p>
+
+        <span class="verse">
+          <span class="highlight">"머무르는 것과 흘러가는 것은<br>
+          다른 일이 아니에요."</span>
+        </span>
+
+        <p>오늘 당신이 머물러야 한다면<br>
+        그 자리에서 푹 쉬세요.<br>
+        내일의 흐름은 내일 생각해도 늦지 않아요.</p>
+
+        <p>오늘 당신이 떠나야 한다면<br>
+        너무 많은 것을 가져가지 마세요.<br>
+        가벼워야 멀리 갈 수 있거든요.</p>
+
+        <p>머무는 자리에서는 충분히 머물고,<br>
+        떠날 때는 뒤돌아보지 마세요.</p>
+
+        <p>구름은 아쉬워하지 않고,<br>
+        후회하지 않고,<br>
+        서두르지도 않아요.</p>
+
+        <p>그저 하늘이 데려가는 대로<br>
+        오늘의 모양으로 살아갑니다.</p>
+
+        <p>당신도 그래도 괜찮아요.<br>
+        <span class="highlight">오늘의 모양</span>으로 오늘을 살아가세요.<br>
+        내일은 또 내일의 구름이 될 거니까요.</p>
+      `
+    },
+
+    'essay-3': {
+      number: '✦',
+      title: '나루에서 보낸 저녁',
+      meta: '하루를 내려놓는 시간에게',
+      body: `
+        <p>저녁이 내려앉습니다.</p>
+
+        <p>낮 동안의 소란이 조금씩 가라앉고,<br>
+        세상은 서서히 색을 낮춰갑니다.<br>
+        멀리서 등불 하나가 켜지고,<br>
+        누군가의 창에서는 저녁 준비 소리가 들려옵니다.</p>
+
+        <p>나루의 배들도<br>
+        오늘 하루의 항해를 마치고<br>
+        조용히 정박해 있어요.</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>저녁은 참 다정한 시간이에요.</p>
+
+        <p>무엇을 더 해내라고 재촉하지 않고,<br>
+        누구와 경쟁하라고 말하지 않아요.<br>
+        그저 <span class="highlight">"오늘은 이만하면 됐다"</span>고<br>
+        조용히 어깨를 두드려 줍니다.</p>
+
+        <p>그런데 우리는 자주<br>
+        저녁이 되어도 하루를 놓지 못해요.</p>
+
+        <p>못다 한 일 생각,<br>
+        낮에 했던 말의 후회,<br>
+        내일 해야 할 것들의 목록.<br>
+        마음은 아직 항해 중이에요.</p>
+
+        <span class="verse">
+          배도 밤에는 닻을 내립니다.<br>
+          그래야 내일 다시 돛을 올릴 수 있어요.
+        </span>
+
+        <p>오늘의 일은 오늘의 나루에 두고 오세요.<br>
+        내일의 짐은 내일 실으면 됩니다.</p>
+
+        <p>지금 이 저녁은<br>
+        오직 당신이 쉬기 위해<br>
+        찾아온 시간입니다.</p>
+
+        <p>구름나루의 등불이<br>
+        오늘 밤 당신의 창가에도 닿기를.</p>
+      `
+    },
+
+    'essay-4': {
+      number: '✦',
+      title: '떠나는 배에게',
+      meta: '돌아오지 않아도 괜찮다는 말',
+      body: `
+        <p>떠나는 배를 보신 적 있나요.</p>
+
+        <p>돛이 바람을 받아 부풀고,<br>
+        뱃머리가 먼바다를 향하는 순간,<br>
+        나루에 남겨진 사람은<br>
+        자꾸만 손을 흔들게 됩니다.</p>
+
+        <p>"잘 가."<br>
+        "조심히 가."<br>
+        "언제 돌아올 거야?"</p>
+
+        <span class="soft">·&nbsp;&nbsp;·&nbsp;&nbsp;·</span>
+
+        <p>하지만 어떤 배는<br>
+        돌아오지 않기 위해 떠나기도 해요.</p>
+
+        <p>새로운 항구에 정착하거나,<br>
+        더 먼 바다를 항해하거나,<br>
+        영영 다른 하늘 아래서 살아가기 위해.</p>
+
+        <p>돌아오지 않는다고 해서<br>
+        그 배가 잘못된 건 아닙니다.</p>
+
+        <span class="verse">
+          떠나는 데에도 용기가 필요하고,<br>
+          <span class="highlight">돌아오지 않는 데에는<br>
+          더 큰 용기가 필요해요.</span>
+        </span>
+
+        <p>혹시 당신에게도<br>
+        떠나보내야 할 무언가가 있나요.</p>
+
+        <p>오래 품어온 꿈이거나,<br>
+        놓지 못한 사람이거나,<br>
+        지나간 시절이거나.</p>
+
+        <p>그것들을 억지로 붙잡지 마세요.<br>
+        나루에 붙들린 배는<br>
+        녹슬고, 잊히고, 결국 가라앉아요.</p>
+
+        <p>떠나야 할 것은 떠나보내주세요.<br>
+        돌아오지 않아도 괜찮다고<br>
+        진심으로 말해주세요.</p>
+
+        <p>그러면 당신의 나루에는<br>
+        <span class="highlight">새로운 배</span>가 들어올 자리가 생깁니다.</p>
+
+        <p>구름나루는 떠나는 모든 배를 응원합니다.<br>
+        그리고 남겨진 당신도, 함께 응원합니다.</p>
+      `
+    },
+
+    // ─────────── 나루의 쉼터 ───────────
+
+    'rest-book': {
+      number: '📚',
+      title: '나루의 책장',
+      meta: '마음을 흔드는 한 구절',
+      body: `
+        <p style="text-align: center; font-style: italic; color: var(--plum); margin-bottom: 2.5rem;">
+          오늘, 한 문장이 당신의 마음에 와닿기를.
+        </p>
+
+        <div style="border-left: 3px solid var(--rose); padding: 0.5rem 1.5rem; margin: 2rem 0; background: rgba(217, 122, 136, 0.05);">
+          <p style="font-size: 1.05rem; font-style: italic; margin-bottom: 0.8rem;">
+            "나는 당신이 오래 살기를 바란다.<br>
+            오랫동안 내 곁에 없더라도,<br>
+            오래오래 살았으면 좋겠다."
+          </p>
+          <p style="font-size: 0.85rem; color: var(--plum); margin-bottom: 0;">
+            — 김연수, 『이토록 평범한 미래』
+          </p>
+        </div>
+
+        <div style="border-left: 3px solid var(--gold); padding: 0.5rem 1.5rem; margin: 2rem 0; background: rgba(201, 152, 74, 0.05);">
+          <p style="font-size: 1.05rem; font-style: italic; margin-bottom: 0.8rem;">
+            "사는 일은 기다리는 일이다.<br>
+            기다리다 보면 무엇이든 온다.<br>
+            <span class="highlight">봄도 오고, 꽃도 오고, 당신도 온다.</span>"
+          </p>
+          <p style="font-size: 0.85rem; color: var(--plum); margin-bottom: 0;">
+            — 어느 봄날의 메모에서
+          </p>
+        </div>
+
+        <div style="border-left: 3px solid var(--lavender-deep); padding: 0.5rem 1.5rem; margin: 2rem 0; background: rgba(184, 165, 201, 0.05);">
+          <p style="font-size: 1.05rem; font-style: italic; margin-bottom: 0.8rem;">
+            "네가 오후 네 시에 온다면<br>
+            나는 세 시부터 행복해지기 시작할 거야."
+          </p>
+          <p style="font-size: 0.85rem; color: var(--plum); margin-bottom: 0;">
+            — 생텍쥐페리, 『어린 왕자』
+          </p>
+        </div>
+
+        <p style="text-align: center; margin-top: 2.5rem; font-style: italic; color: var(--plum);">
+          이 중 한 문장이 오늘의 당신에게 닿기를.
+        </p>
+      `
+    },
+
+    'rest-gallery': {
+      number: '🎨',
+      title: '나루의 쇼창',
+      meta: '그림 한 점과 함께 걷는 산책',
+      body: `
+        <div style="text-align: center; margin: 2rem 0;">
+          <svg viewBox="0 0 400 280" style="width: 100%; max-width: 400px; border-radius: 8px; background: linear-gradient(180deg, #F5E4C8 0%, #E8B591 50%, #C97A3E 100%);">
+            <!-- 수평선 -->
+            <line x1="0" y1="180" x2="400" y2="180" stroke="#8B5E3C" stroke-width="0.5" opacity="0.4"/>
+            <!-- 해 -->
+            <circle cx="280" cy="130" r="32" fill="#F5D78A" opacity="0.9"/>
+            <circle cx="280" cy="130" r="24" fill="#FFF4D0" opacity="0.8"/>
+            <!-- 바다 반사 -->
+            <ellipse cx="280" cy="180" rx="50" ry="4" fill="#F5D78A" opacity="0.5"/>
+            <ellipse cx="280" cy="200" rx="80" ry="3" fill="#F5D78A" opacity="0.3"/>
+            <!-- 작은 배 실루엣 -->
+            <path d="M120 178 L140 178 L145 170 L155 178 L175 178 L170 185 L125 185 Z" fill="#4A3520" opacity="0.6"/>
+            <line x1="150" y1="178" x2="150" y2="160" stroke="#4A3520" stroke-width="0.8" opacity="0.6"/>
+            <path d="M150 160 L165 175 L150 175 Z" fill="#4A3520" opacity="0.5"/>
+            <!-- 새 -->
+            <path d="M200 100 Q205 96 210 100 Q215 96 220 100" stroke="#4A3520" stroke-width="1" fill="none" opacity="0.5"/>
+            <path d="M230 115 Q234 112 238 115 Q242 112 246 115" stroke="#4A3520" stroke-width="1" fill="none" opacity="0.4"/>
+            <!-- 구름 -->
+            <ellipse cx="80" cy="60" rx="40" ry="10" fill="#FFFFFF" opacity="0.7"/>
+            <ellipse cx="100" cy="55" rx="25" ry="8" fill="#FFFFFF" opacity="0.6"/>
+          </svg>
+          <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.9rem; color: var(--gold); margin-top: 0.8rem; letter-spacing: 0.15em;">
+            — 저녁 항구 · evening harbor —
+          </p>
+        </div>
+
+        <p>저무는 해를 마주하고 있는 작은 배 한 척.</p>
+
+        <p>하루가 끝나가는 시간,<br>
+        배는 항구로 돌아오고 있습니다.<br>
+        바다는 해를 통째로 머금어<br>
+        <span class="highlight">황금빛으로 물들어 가는 중</span>이에요.</p>
+
+        <p>누구도 재촉하지 않는 이 시간.<br>
+        오늘 하루 수고한 모든 것들이<br>
+        조용히 자기 자리로 돌아가는 순간입니다.</p>
+
+        <span class="verse">
+          당신의 하루도 이제 항구에 다다르고 있어요.<br>
+          고요히, 따뜻하게.
+        </span>
+      `
+    },
+
+    'rest-smile': {
+      number: '😊',
+      title: '나루의 웃음방',
+      meta: '피식 웃게 되는 작은 장면들',
+      body: `
+        <p style="text-align: center; font-style: italic; color: var(--plum); margin-bottom: 2.5rem;">
+          오늘은 가볍게. 그냥 피식, 웃고 가세요.
+        </p>
+
+        <div style="background: rgba(255, 248, 231, 0.6); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+          <p style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--gold);">🕊️ 하나</p>
+          <p style="margin-bottom: 0;">
+            "엄마, 오늘 학교에서 시 배웠어."<br>
+            "어머, 어떤 시?"<br>
+            "시금치."<br>
+            <span style="color: var(--plum); font-style: italic; font-size: 0.9rem;">— 어느 저녁 식탁의 대화</span>
+          </p>
+        </div>
+
+        <div style="background: rgba(232, 213, 227, 0.4); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+          <p style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--gold);">🕊️ 둘</p>
+          <p style="margin-bottom: 0;">
+            지하철에서 한 어르신이 옆자리 젊은이에게 물으셨어요.<br>
+            "총각, 이 지하철 어디까지 가요?"<br>
+            "종점까지요, 어르신."<br>
+            "아이고, 그럼 나보다 <span class="highlight">멀리 가네."</span>
+          </p>
+        </div>
+
+        <div style="background: rgba(217, 122, 136, 0.08); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+          <p style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--gold);">🕊️ 셋</p>
+          <p style="margin-bottom: 0;">
+            카페 메뉴판에 이렇게 쓰여 있었어요.<br><br>
+            "오늘의 추천 메뉴: <span class="highlight">당신이 좋아하는 것</span>"<br><br>
+            주문을 할 수가 없었다고 합니다.
+          </p>
+        </div>
+
+        <div style="background: rgba(201, 152, 74, 0.08); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+          <p style="margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--gold);">🕊️ 넷</p>
+          <p style="margin-bottom: 0;">
+            여섯 살 조카가 할머니께 말했어요.<br>
+            "할머니, 왜 이렇게 주름이 많아요?"<br>
+            "응, 할머니가 오래 웃어서 그런 거야."<br>
+            "그럼 나도 할머니처럼 <span class="highlight">많이 웃어야겠다.</span>"
+          </p>
+        </div>
+
+        <p style="text-align: center; margin-top: 2.5rem; font-style: italic; color: var(--rose);">
+          웃음은 가장 가벼운 치유입니다.
+        </p>
+      `
+    },
+
+    'rest-breath': {
+      number: '🧘',
+      title: '나루의 숨터',
+      meta: '1분 호흡 가이드',
+      body: `
+        <p style="text-align: center; font-style: italic; color: var(--plum); margin-bottom: 2rem;">
+          딱 1분. 천천히 따라와 주세요.
+        </p>
+
+        <div style="text-align: center; padding: 2rem; background: rgba(184, 165, 201, 0.1); border-radius: 12px; margin: 2rem 0;">
+          <p style="font-size: 1.15rem; margin-bottom: 1rem; font-weight: 500; color: var(--plum-deep);">
+            🌿 준비
+          </p>
+          <p style="margin-bottom: 0;">
+            어깨의 힘을 살짝 빼고,<br>
+            두 발을 바닥에 가만히 두세요.<br>
+            눈을 감거나,<br>
+            한 점을 부드럽게 응시하셔도 좋아요.
+          </p>
+        </div>
+
+        <div style="text-align: center; padding: 2rem; background: rgba(168, 196, 184, 0.12); border-radius: 12px; margin: 2rem 0;">
+          <p style="font-size: 1.15rem; margin-bottom: 1rem; font-weight: 500; color: #4a6b7d;">
+            🌬 들숨 · 4초
+          </p>
+          <p style="margin-bottom: 0;">
+            코로 천천히 숨을 들이마시며<br>
+            마음속으로 세어 보세요.<br>
+            <span class="highlight">하나 · 둘 · 셋 · 넷</span>
+          </p>
+        </div>
+
+        <div style="text-align: center; padding: 2rem; background: rgba(201, 152, 74, 0.1); border-radius: 12px; margin: 2rem 0;">
+          <p style="font-size: 1.15rem; margin-bottom: 1rem; font-weight: 500; color: #A87A30;">
+            ⏸ 멈춤 · 2초
+          </p>
+          <p style="margin-bottom: 0;">
+            숨을 잠시 붙잡아 주세요.<br>
+            <span class="highlight">하나 · 둘</span>
+          </p>
+        </div>
+
+        <div style="text-align: center; padding: 2rem; background: rgba(217, 122, 136, 0.1); border-radius: 12px; margin: 2rem 0;">
+          <p style="font-size: 1.15rem; margin-bottom: 1rem; font-weight: 500; color: #B85668;">
+            🍃 날숨 · 6초
+          </p>
+          <p style="margin-bottom: 0;">
+            입으로 길고 부드럽게 내쉬어 주세요.<br>
+            마음의 무게를 함께 내려놓으면서.<br>
+            <span class="highlight">하나 · 둘 · 셋 · 넷 · 다섯 · 여섯</span>
+          </p>
+        </div>
+
+        <p style="text-align: center; font-style: italic; color: var(--plum); margin: 2rem 0 1rem;">
+          이 호흡을 <span class="highlight">다섯 번</span> 반복해 보세요.<br>
+          1분이면 충분합니다.
+        </p>
+
+        <span class="verse">
+          짧은 숨 고르기로도<br>
+          당신의 마음은 조용히 제자리를 찾습니다.
+        </span>
+
+        <p style="text-align: center; color: var(--plum); font-size: 0.9rem; margin-top: 2rem;">
+          — 언제든 다시 들러주세요 —
+        </p>
+      `
+    },
+
+    // ─────────── 나루의 동시방 ───────────
+
+    'poem-1': {
+      number: '🌸',
+      title: '걱정 하지마',
+      meta: '2025. 5. 29. 하윤쌤',
+      body: `
+        <p class="poem-intro">poem no. 01</p>
+
+        <div class="poem-text">
+걱정 하지마
+운동 중이야
+
+너도 신나게 달리는 게 좋지?
+나도 살살 부는 바람은 시시해
+온몸 운동을 하려면
+좀 세게 불어줘야 좋거든
+
+<span class="poem-ornament">· · ·</span>
+
+걱정 하지마
+목욕 중이야
+
+너도 목욕하면 기분이 좋지?
+나도 고양이 세수는 시시해
+온몸을 깨끗이 씻으려면
+좀 많은 물이 필요하거든
+
+<span class="poem-ornament">· · ·</span>
+
+비바람이 심하게 부는 날
+걱정스레 창밖을 바라보는 나에게
+걱정 마라 손짓하는
+나무와 꽃들
+        </div>
+
+        <p class="poem-note">
+          세찬 비바람이 두렵기만 했던 어느 날,<br>
+          나무와 꽃들이 내게 건넨 말을 옮겨 적었습니다.<br>
+          "걱정 마라. 우리는 지금 운동 중이란다."
+        </p>
+      `
+    },
+
+    'poem-2': {
+      number: '🌿',
+      title: '쓴 약을 먹으며',
+      meta: '하윤쌤',
+      body: `
+        <p class="poem-intro">poem no. 02</p>
+
+        <div class="poem-text">
+목구멍이 불타듯 부어올랐다가
+쿨럭쿨럭 기침을 자꾸 낸다.
+목구멍을 꽉 잠근 가래들
+뱉어 내려 안간힘을 쓰지만
+자꾸만 자꾸만 목구멍에 쌓인다.
+
+<span class="poem-ornament">· · ·</span>
+
+빨리 떼어 버리려
+자꾸 쓴 약을 먹는다.
+입안이 온통 쓰다.
+머리도 쓰고
+마음도 쓰다.
+
+<span class="poem-ornament">· · ·</span>
+
+내 몸이라도
+마음대로 할 수 없는
+내 마음이라도
+마음대로 할 수 없는
+이 갑갑함
+
+<span class="poem-ornament">· · ·</span>
+
+몸으로 들어간
+쓴 약들은
+어디서 무엇을 할까?
+여전히 갑갑하고
+여전히 쿨럭쿨럭
+
+<span class="poem-ornament">· · ·</span>
+
+쓴 약이 몸에 좋다는
+마음이 갖는 위안으로
+정해진 용량보다 더 많은
+쓴 약을 먹다 보니
+자꾸만 씁쓸해진다.
+        </div>
+
+        <p class="poem-note">
+          몸이 아팠던 어느 날의 마음.<br>
+          마음대로 되지 않는 것들 사이에서<br>
+          우리는 자주 쓴 약을 삼킵니다.
+        </p>
+      `
+    },
+
+    'poem-3': {
+      number: '🐾',
+      title: '고양이 할아버지',
+      meta: '하윤쌤',
+      body: `
+        <p class="poem-intro">poem no. 03</p>
+
+        <div class="poem-text">
+아기적 나와 같이
+우리 집으로 온 고양이
+나는 커다란 머슴아가 되었고
+고양이는 할아버지가 되었다.
+
+<span class="poem-ornament">· · ·</span>
+
+엄마는 내가 부벼대면
+다 큰 게 징그럽다 하면서
+고양이 할아버지는
+여전히 귀엽단다.
+
+<span class="poem-ornament">· · ·</span>
+
+12년 동안
+같은 나이를 먹었는데
+나는 여드름 숭숭한 멋쩍은 아이
+고양이는 귀여운 할아버지
+
+<span class="poem-ornament">· · ·</span>
+
+불공평하긴 하지만
+내가 할아버지 될 때까지
+함께 했으면 좋겠다.
+고양이 할아버지
+        </div>
+
+        <p class="poem-note">
+          같은 시간을 살아도 서로 다른 속도로 나이 드는 우리.<br>
+          그래도 끝까지 함께이고 싶은 마음.
+        </p>
+      `
+    }
+  };
+
+  // Reader 목록 순서 정의 (다음 글로 넘어가기용)
+  const readingOrder = {
+    'healing-1': 'healing-2',
+    'healing-2': 'healing-3',
+    'healing-3': 'healing-4',
+    'healing-4': 'healing-5',
+    'healing-5': null, // 마지막
+    'essay-1': 'essay-2',
+    'essay-2': 'essay-3',
+    'essay-3': 'essay-4',
+    'essay-4': null, // 마지막
+    'rest-book': 'rest-gallery',
+    'rest-gallery': 'rest-smile',
+    'rest-smile': 'rest-breath',
+    'rest-breath': null, // 마지막
+    'poem-1': 'poem-2',
+    'poem-2': 'poem-3',
+    'poem-3': null // 마지막
+  };
+
+  let currentReading = null;
+
+  function openReader(id) {
+    const reading = readings[id];
+    if (!reading) return;
+    currentReading = id;
+    document.getElementById('reader-number').textContent = reading.number;
+    document.getElementById('reader-title').textContent = reading.title;
+    document.getElementById('reader-meta').textContent = reading.meta;
+
+    const bodyEl = document.getElementById('reader-body');
+    bodyEl.innerHTML = reading.body;
+    // 동시일 경우 poem 클래스 추가 (id가 'poem-'으로 시작하면 동시로 처리)
+    if (id.startsWith('poem-')) {
+      bodyEl.classList.add('poem');
+    } else {
+      bodyEl.classList.remove('poem');
+    }
+
+    // 다음 글 버튼 처리
+    const nextBtn = document.getElementById('reader-next-btn');
+    const nextId = readingOrder[id];
+    if (nextId && readings[nextId]) {
+      nextBtn.style.display = 'inline-block';
+      nextBtn.textContent = '다음 이야기: ' + readings[nextId].title + ' →';
+    } else {
+      nextBtn.style.display = 'none';
+    }
+
+    const modal = document.getElementById('reader-modal');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // 스크롤을 상단으로
+    setTimeout(() => {
+      modal.scrollTop = 0;
+    }, 50);
+  }
+
+  function closeReader() {
+    const modal = document.getElementById('reader-modal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    currentReading = null;
+  }
+
+  function closeReaderIfBackdrop(event) {
+    if (event.target.classList.contains('reader-modal')) {
+      closeReader();
+    }
+  }
+
+  function nextReading() {
+    if (!currentReading) return;
+    const nextId = readingOrder[currentReading];
+    if (nextId) {
+      openReader(nextId);
+    }
+  }
+
+  // "준비 중" 항목 클릭 시 안내
+  document.querySelectorAll('.library-item.coming-soon').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      alert('곧 만나볼 수 있어요.\n구름나루가 이 이야기를 열심히 짓고 있습니다.');
+    });
+  });
+</script>
+
+</body>
+</html>
